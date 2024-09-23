@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="contato.css">
+</head>
+
+<body>
+    <div class="tudo">
+        <h1>Contatos</h1>
+
+        <div class="caixa">
+            <input type="text" id="nome" required placeholder="Nome do contato">
+            <input type="number" id="numero" required placeholder="(00) 00000-0000">
+        </div>
+
+            <button id="addcontato" class="botao">Salvar</button>
+
+        <ul id="lista"></ul>
+    </div>
+    
+</body>
+<script>
+    document.getElementById('addcontato').addEventListener('click', function() {
+    const nome = document.getElementById('nome').value;
+    const numero = document.getElementById('numero').value;
+
+    if (nome && numero) {
+        const li = document.createElement('li');
+        li.className = 'novoContato';
+        li.textContent = `${nome} — Celular: ${numero}`;
+
+        const removebotao = document.createElement('button');
+        removebotao.textContent = 'Remover';
+
+        removebotao.addEventListener('click', function() {
+            li.remove();
+        });
+
+        li.appendChild(removebotao);
+        document.getElementById('lista').appendChild(li);
+        document.getElementById('nome').value = '';
+        document.getElementById('numero').value = '';
+    }
+});
+</script>
+</html>
